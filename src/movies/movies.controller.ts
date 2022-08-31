@@ -10,7 +10,7 @@ export class MoviesController {
     constructor(private readonly moviesService: MoviesService) {}
 
     @Get()
-    getAll() : Movie[]{
+    getAll() : Movie []{
         return this.moviesService.getAll();
     }
 
@@ -38,10 +38,7 @@ export class MoviesController {
 
     @Patch('/:id')
     patch(@Param('id') movieId:string, @Body() updateData){
-        return {
-            updatedMovie:movieId,
-            ...updateData,
-        };
+        return this.moviesService.update(movieId, updateData);        
     }
    
 
